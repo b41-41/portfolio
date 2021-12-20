@@ -12,13 +12,14 @@ html {
 body {
   overflow-x: hidden;
   color: rgb(29, 29, 31);
+  background-color: #0540f2;
 }
 
 .section {
   width: 100%;
   text-align: center;
   z-index: 1;
-  border: red solid 1px;
+  /* border: red solid 1px; */
 }
 
 .loading {
@@ -89,7 +90,7 @@ body {
 .first-message {
   position: fixed;
   font-family: "Noto Serif KR", serif;
-  font-size: 3.5rem;
+  font-size: 5vh;
   color: #0540f2;
   padding: 1.5rem 1.5rem;
   width: 100%;
@@ -101,13 +102,14 @@ body {
 .wave {
   position: fixed;
   background-color: #056cf2;
+  /* background-color: white; */
   width: 200vw;
   height: 200vw;
   top: 100%;
   left: -50vw;
   border-radius: 46%;
   animation: move 10s infinite linear;
-  z-index: -3;
+  z-index: 0;
 }
 
 .wave2 {
@@ -120,7 +122,6 @@ body {
   border-radius: 43%;
   animation: move 13s infinite linear;
   z-index: 0;
-  /* opacity: 0.12; */
 }
 
 .opa-elem {
@@ -130,11 +131,11 @@ body {
 .second-message,
 .introduce {
   color: #d8e6f2;
-  font-size: 3.5rem;
+  font-size: 5vh;
   font-weight: bold;
   position: fixed;
   text-align: left;
-  top: 20%;
+  top: 10%;
   width: 100%;
   padding-left: 10%;
 }
@@ -144,11 +145,14 @@ body {
   position: fixed;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 5px;
+  padding: 1rem 1rem;
   width: 100%;
   top: 0;
   left: 0;
   background-color: rgba(216, 230, 242, 0.95);
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box; /* Firefox, other Gecko */
+  box-sizing: border-box; /* Opera/IE 8+ */
 }
 
 .top .logo a,
@@ -213,8 +217,7 @@ body {
 #section-1 {
   visibility: hidden;
   color: white;
-  /* background-color: #5240fe; */
-  /* background-color: red; */
+  /* background-color: #0540f2; */
   padding-top: 30vh;
   z-index: -4;
 }
@@ -233,16 +236,16 @@ body {
 
 .footer {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  background-color: red;
-  color: white;
+  background-color: #5e9ff2;
+  color: #d8e6f2;
   align-items: center;
   font-weight: bold;
   font-size: 1rem;
   padding: 1rem 0;
   width: 100%;
   height: 7rem;
-  margin-top: 10vh;
 }
 
 @keyframes move {

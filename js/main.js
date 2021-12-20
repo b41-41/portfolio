@@ -44,7 +44,7 @@
                 wave_move: [100, -50, { start: 0, end: 0.1 }],
                 wave2_move: [115, -35, { start: 0, end: 0.1 }],
                 //to programar
-                secondMessage_opacity: [0, 1, { start: 0.08, end: 0.13 }],
+                secondMessage_opacity: [0, 1, { start: 0.075, end: 0.12 }],
                 secondMessage_opacity_out: [1, 0, { start: 0.2, end: 0.25 }],
                 //introduce
                 introHello_opacity: [0, 1, { start: 0.26, end: 0.3 }],
@@ -101,9 +101,15 @@
         const currentYOffset = yOffset - prevScrollHeight;
         const scrollHeight = sectionInfo[currentSection].scrollHeight;
         const scrollRatio = currentYOffset / scrollHeight;
+        const CONTAINER = document.querySelector('.container');
+
+        console.log(scrollRatio);
 
         switch (currentSection) {
             case 0:
+                //background color
+                CONTAINER.style.backgroundColor = 'white';
+
                 //Loading Object
                 let loadingObj_move = calcValue(values.loadingObj_move, currentYOffset);
                 let loadingObj_opacity = calcValue(values.loadingObj_opacity, currentYOffset);
@@ -128,10 +134,23 @@
 
             case 1:
                 //wave1,2
-                let wave_move = calcValue(values.wave_move, currentYOffset);
-                let wave_move2 = calcValue(values.wave2_move, currentYOffset);
-                objs.wave.style.top = `${wave_move}%`;
-                objs.wave2.style.top = `${wave_move2}%`;
+                if (scrollRatio <= 0.1) {
+                    objs.wave.style.opacity = 1;
+                    objs.wave2.style.opacity = 1;
+                    let wave_move = calcValue(values.wave_move, currentYOffset);
+                    let wave_move2 = calcValue(values.wave2_move, currentYOffset);
+                    objs.wave.style.top = `${wave_move}%`;
+                    objs.wave2.style.top = `${wave_move2}%`;
+                    //background color
+                    CONTAINER.style.backgroundColor = 'white';
+                    objs.container.style.backgroundColor = 'white';
+                } else {
+                    objs.wave.style.opacity = 0;
+                    objs.wave2.style.opacity = 0;
+                    //Change background color
+                    CONTAINER.style.backgroundColor = '#0540f2';
+                    objs.container.style.backgroundColor = '#0540f2';
+                }
 
                 //second message
                 if (scrollRatio <= 0.2) {
@@ -166,16 +185,13 @@
                     objs.introJeongdabin.innerText = '정다비';
                 } else if (scrollRatio < 0.38) {
                     objs.introJeongdabin.innerText = '정다빈';
+                } else {
+                    objs.introJeongdabin.innerText = '정다빈';
                 }
 
                 //입니다. 
                 let introMyname_opacity = calcValue(values.introMyname_opacity, currentYOffset);
                 objs.introMyname.style.opacity = introMyname_opacity;
-
-                //remove wave, change background
-                if (scrollRatio <= 0.2) {
-                    // objs.container.style.background = `red`;
-                }
 
                 break;
             case 2:
