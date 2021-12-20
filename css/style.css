@@ -7,7 +7,6 @@ html {
   font-family: "Noto Sans KR", sans-serif;
   font-size: 14px;
   background-color: 5240fe;
-  max-width: 1000px;
 }
 
 body {
@@ -24,18 +23,18 @@ body {
 }
 
 .loading {
-  display: flex;
   position: fixed;
-  left: 50%;
-  right: 50%;
-  text-align: center;
+  align-items: center;
   justify-content: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
   background-color: #edfe40;
   width: 40vh;
   height: 40vh;
   border-radius: 50%;
-  margin: 0 auto;
-  position: relative;
+  z-index: 5;
 }
 
 .loading p {
@@ -47,13 +46,17 @@ body {
 
 .hangul-set {
   display: flex;
+  position: fixed;
+  top: 50%;
+  left: 120%;
+  transform: translate(-50%, -50%);
   justify-content: center;
-  position: relative;
   width: 40vh;
   height: 40vh;
   margin: 0 auto;
   background-color: #5240fe;
   border-radius: 50%;
+  z-index: 4;
 }
 
 .hangul-set p {
@@ -94,12 +97,11 @@ body {
 .wave {
   position: absolute;
   background-color: white;
-  width: 400vh;
-  height: 400vh;
-  margin-left: -200vh;
-  margin-top: -280vh;
-  left: 50%;
-  border-radius: 45%;
+  width: 200vw;
+  height: 200vw;
+  left: -50vw;
+  top: -100vw;
+  border-radius: 46%;
   animation: move 15s infinite linear;
   z-index: 0;
 }
@@ -107,12 +109,11 @@ body {
 .wave2 {
   position: absolute;
   background-color: white;
-  width: 400vh;
-  height: 400vh;
-  margin-left: -200vh;
-  margin-top: -270vh;
-  left: 50%;
-  border-radius: 45%;
+  width: 200vw;
+  height: 200vw;
+  left: -50vw;
+  top: -95vw;
+  border-radius: 43%;
   animation: move 10s infinite linear;
   z-index: 0;
   opacity: 0.12;
