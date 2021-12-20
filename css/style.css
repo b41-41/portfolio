@@ -135,8 +135,35 @@ body {
   position: fixed;
   text-align: left;
   top: 20%;
-  left: 20%;
-  transform: translate(-50%, -50%);
+  width: 100%;
+  padding-left: 10%;
+}
+
+.top {
+  display: flex;
+  position: fixed;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(216, 230, 242, 0.95);
+}
+
+.top .logo a,
+.top .logo a:visited {
+  color: #056cf2;
+  font-size: 2rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.top .menu a,
+.top .menu a:visited {
+  color: #056cf2;
+  text-decoration: none;
+  font-size: 1.2rem;
 }
 
 .main {
@@ -194,6 +221,7 @@ body {
 
 #section-2 {
   visibility: hidden;
+  background-color: #0540f2;
   z-index: 5;
 }
 

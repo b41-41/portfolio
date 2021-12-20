@@ -148,13 +148,34 @@
                 let introHello_opacity = calcValue(values.introHello_opacity, currentYOffset);
                 objs.introHello.style.opacity = introHello_opacity;
                 //정다빈
-                let introJeongdabin_visible = calcValue(values.introJeongdabin_visible, currentYOffset);
-                objs.introJeongdabin.style.opacity = introJeongdabin_visible;
+                if (scrollRatio < 0.3) {
+                    objs.introJeongdabin.innerText = '';
+                } else if (scrollRatio < 0.31) {
+                    objs.introJeongdabin.innerText = 'ㅈ';
+                } else if (scrollRatio < 0.32) {
+                    objs.introJeongdabin.innerText = '저';
+                } else if (scrollRatio < 0.33) {
+                    objs.introJeongdabin.innerText = '정';
+                } else if (scrollRatio < 0.34) {
+                    objs.introJeongdabin.innerText = '정ㄷ';
+                } else if (scrollRatio < 0.35) {
+                    objs.introJeongdabin.innerText = '정다';
+                } else if (scrollRatio < 0.36) {
+                    objs.introJeongdabin.innerText = '정답';
+                } else if (scrollRatio < 0.37) {
+                    objs.introJeongdabin.innerText = '정다비';
+                } else if (scrollRatio < 0.38) {
+                    objs.introJeongdabin.innerText = '정다빈';
+                }
+
                 //입니다. 
                 let introMyname_opacity = calcValue(values.introMyname_opacity, currentYOffset);
                 objs.introMyname.style.opacity = introMyname_opacity;
 
-
+                //remove wave, change background
+                if (scrollRatio <= 0.2) {
+                    // objs.container.style.background = `red`;
+                }
 
                 break;
             case 2:
