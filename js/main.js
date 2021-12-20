@@ -26,7 +26,7 @@
         },
         {
             //section1
-            heightScale: 5,
+            heightScale: 2,
             scrollHeight: 0,
             objs: {
                 container: document.querySelector('#section-1'),
@@ -41,15 +41,15 @@
             },
             values: {
                 //wave
-                wave_move: [100, -50, { start: 0, end: 0.1 }],
-                wave2_move: [115, -35, { start: 0, end: 0.1 }],
+                wave_move: [100, -50, { start: 0, end: 0.2 }],
+                wave2_move: [115, -35, { start: 0, end: 0.2 }],
                 //to programar
-                secondMessage_opacity: [0, 1, { start: 0.075, end: 0.12 }],
-                secondMessage_opacity_out: [1, 0, { start: 0.2, end: 0.25 }],
+                secondMessage_opacity: [0, 1, { start: 0.15, end: 0.24 }],
+                secondMessage_opacity_out: [1, 0, { start: 0.4, end: 0.5 }],
                 //introduce
-                introHello_opacity: [0, 1, { start: 0.26, end: 0.3 }],
-                introJeongdabin_visible: [0, 1, { start: 0.3, end: 0.31 }],
-                introMyname_opacity: [0, 1, { start: 0.4, end: 0.43 }],
+                introHello_opacity: [0, 1, { start: 0.52, end: 0.6 }],
+                introJeongdabin_visible: [0, 1, { start: 0.6, end: 0.6 }],
+                introMyname_opacity: [0, 1, { start: 0.76, end: 1 }],
             }
         },
         {
@@ -59,6 +59,14 @@
             objs: {
                 container: document.querySelector('#section-2'),
             },
+        },
+        {
+            //section3
+            heightScale: 2,
+            scrollHeight: 0,
+            objs: {
+                container: document.querySelector('#section-3'),
+            }
         }
     ];
 
@@ -134,7 +142,7 @@
 
             case 1:
                 //wave1,2
-                if (scrollRatio <= 0.1) {
+                if (scrollRatio <= 0.2) {
                     objs.wave.style.opacity = 1;
                     objs.wave2.style.opacity = 1;
                     let wave_move = calcValue(values.wave_move, currentYOffset);
@@ -153,7 +161,7 @@
                 }
 
                 //second message
-                if (scrollRatio <= 0.2) {
+                if (scrollRatio <= 0.4) {
                     let secondMessage_opacity = calcValue(values.secondMessage_opacity, currentYOffset);
                     objs.secondMessage.style.opacity = secondMessage_opacity;
                 } else {
@@ -167,23 +175,23 @@
                 let introHello_opacity = calcValue(values.introHello_opacity, currentYOffset);
                 objs.introHello.style.opacity = introHello_opacity;
                 //정다빈
-                if (scrollRatio < 0.3) {
+                if (scrollRatio < 0.6) {
                     objs.introJeongdabin.innerText = '';
-                } else if (scrollRatio < 0.31) {
+                } else if (scrollRatio < 0.62) {
                     objs.introJeongdabin.innerText = 'ㅈ';
-                } else if (scrollRatio < 0.32) {
+                } else if (scrollRatio < 0.64) {
                     objs.introJeongdabin.innerText = '저';
-                } else if (scrollRatio < 0.33) {
+                } else if (scrollRatio < 0.66) {
                     objs.introJeongdabin.innerText = '정';
-                } else if (scrollRatio < 0.34) {
+                } else if (scrollRatio < 0.68) {
                     objs.introJeongdabin.innerText = '정ㄷ';
-                } else if (scrollRatio < 0.35) {
+                } else if (scrollRatio < 0.7) {
                     objs.introJeongdabin.innerText = '정다';
-                } else if (scrollRatio < 0.36) {
+                } else if (scrollRatio < 0.72) {
                     objs.introJeongdabin.innerText = '정답';
-                } else if (scrollRatio < 0.37) {
+                } else if (scrollRatio < 0.74) {
                     objs.introJeongdabin.innerText = '정다비';
-                } else if (scrollRatio < 0.38) {
+                } else if (scrollRatio < 0.76) {
                     objs.introJeongdabin.innerText = '정다빈';
                 } else {
                     objs.introJeongdabin.innerText = '정다빈';
@@ -195,6 +203,8 @@
 
                 break;
             case 2:
+                break;
+            case 3:
                 break;
         }
     }
