@@ -226,6 +226,7 @@
 
         if (yOffset > prevScrollHeight + sectionInfo[currentSection].scrollHeight) {
             enterNewSection = true;
+            if (currentSection === 2) return;
             currentSection++;
             document.body.setAttribute('id', `show-section-${currentSection}`);
         }
