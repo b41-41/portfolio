@@ -26,7 +26,7 @@
         },
         {
             //section1
-            heightScale: 2,
+            heightScale: 5,
             scrollHeight: 0,
             objs: {
                 container: document.querySelector('#section-1'),
@@ -58,16 +58,20 @@
             scrollHeight: 0,
             objs: {
                 container: document.querySelector('#section-2'),
+                main: document.querySelector('.main'),
             },
-        },
-        {
-            //section3
-            heightScale: 2,
-            scrollHeight: 0,
-            objs: {
-                container: document.querySelector('#section-3'),
+            values: {
+                main_move: [100, 27, { start: 0, end: 0.5 }],
             }
-        }
+        },
+        // {
+        //     //section3
+        //     heightScale: 2,
+        //     scrollHeight: 0,
+        //     objs: {
+        //         container: document.querySelector('#section-3'),
+        //     }
+        // }
     ];
 
     function setLayout() {
@@ -203,9 +207,13 @@
 
                 break;
             case 2:
+
+                let main_move = calcValue(values.main_move, currentYOffset);
+                objs.main.style.opacity = 1;
+                objs.main.style.top = `${main_move}vh`;
                 break;
-            case 3:
-                break;
+            // case 3:
+            //     break;
         }
     }
 
