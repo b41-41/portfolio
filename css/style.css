@@ -6,7 +6,7 @@ font-family: 'Noto Serif KR', serif; */
 html {
   font-family: "Noto Sans KR", sans-serif;
   font-size: 14px;
-  background-color: 5240fe;
+  background-color: #0540f2;
 }
 
 body {
@@ -25,6 +25,7 @@ body {
 .loading {
   position: fixed;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   top: 50%;
@@ -36,13 +37,18 @@ body {
   height: 40vh;
   border-radius: 50%;
   z-index: 5;
+  font-size: 5vh;
 }
 
 .loading p {
   margin: auto auto;
-  font-size: 5vh;
   font-weight: bold;
   color: #d8e6f2;
+}
+
+.loading #loading_2 {
+  font-size: 3vh;
+  font-weight: lighter;
 }
 
 .hangul-set {
