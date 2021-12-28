@@ -12,10 +12,65 @@ body {
   background-color: #0540f2;
 }
 
+img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+a {
+  text-decoration: none;
+  color: #d8e6f2;
+  height: 55vh;
+}
+
 .menu {
   position: fixed;
   font-size: 5vh;
+  font-weight: bold;
   top: 10vh;
-  padding: 10vh, auto;
+  padding-left: 10%;
   width: 100%;
+}
+
+.contents {
+  position: fixed;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  top: 27vh;
+  padding: 0 10%;
+  width: 100%;
+  height: 55vh;
+  overflow-x: scroll;
+}
+
+.content_box {
+  display: flex;
+  flex-direction: column;
+  width: 30vw;
+  height: 100%;
+  border-radius: 15px;
+  background-color: red;
+  margin: 0 10px;
+}
+
+.content_thum {
+  background-color: yellow;
+  height: 70%;
+  margin: 1%;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.content_title {
+  color: #d8e6f2;
+  font-weight: bold;
+  font-size: 5vh;
+  margin: 0 3%;
+}
+
+.content_explain {
+  margin: 0 3%;
+  font-size: 3.5vh;
 }
