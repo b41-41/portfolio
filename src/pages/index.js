@@ -12,9 +12,9 @@ const Home = () => {
     const [currentYOffset, setCurrentYOffset] = useState(0);
 
     const yOffset = useScroll();
-    console.log(yOffset);
     const sectionValue = useSetLayout();
-    console.log(`currentSection ${currentSection}`);
+    const scrollHeight = sectionValue[currentSection].height;
+    const scrollRatio = currentYOffset / scrollHeight;
 
     //현재 Section 계산
     const currentSectionCalc = () => {
@@ -31,9 +31,6 @@ const Home = () => {
 
     const calcValue = (values) => {
         let rv;
-
-        const scrollHeight = sectionValue[currentSection].height;
-        const scrollRatio = currentYOffset / scrollHeight;
 
         if (values.length === 3) {
             const partScrollStart = values[2].start * scrollHeight;
@@ -52,14 +49,12 @@ const Home = () => {
         }
 
         return rv;
-
     };
 
     //스크롤 할 때마다 이전 값 계산
     useEffect(() => {
         currentSectionCalc();
         setCurrentYOffset(yOffset - prevScrollHeight);
-        console.log(`prevScrollHeight ${prevScrollHeight}`);
     }, [yOffset]);
 
     useEffect(() => {
@@ -69,6 +64,36 @@ const Home = () => {
         }
         setPrevScrollHeight(sumPrevScrollHeight);
     }, [currentSection]);
+
+    const myName = () => {
+        if (currentSection === 1) {
+            if (scrollRatio < 0.6) {
+                return '';
+            } else if (scrollRatio < 0.62) {
+                return 'ㅈ';
+            } else if (scrollRatio < 0.64) {
+                return '저';
+            } else if (scrollRatio < 0.66) {
+                return '정';
+            } else if (scrollRatio < 0.68) {
+                return '정ㄷ';
+            } else if (scrollRatio < 0.7) {
+                return '정다';
+            } else if (scrollRatio < 0.72) {
+                return '정답';
+            } else if (scrollRatio < 0.74) {
+                return '정다비';
+            } else if (scrollRatio < 0.76) {
+                return '정다빈';
+            } else {
+                return '정다빈';
+            }
+        } else {
+            return;
+        }
+
+
+    }
 
     return (
         <>
@@ -92,8 +117,11 @@ const Home = () => {
                                 <p>ㄷ</p>
                             </div>
                         </div>
-                        <div className="opa-elem first-message" style={{ opacity: calcValue(sectionInfo[0].values.firstMessage_opacity) }}>
-                            <p>한국어 선생님에서</p>
+                        <div
+                            className="opa-elem first-message"
+                            style={{ opacity: calcValue(sectionInfo[0].values.firstMessage_opacity) }}
+                        >
+                            <p>한국어도 가르치는</p>
                         </div>
                         <div className="opa-elem pls-scroll">
                             <div className="arrow"></div>
@@ -105,12 +133,20 @@ const Home = () => {
                     <section className="section" id="section-1" style={{ height: sectionValue[1].height, backgroundColor: 'white' }}>
                         <div className="wave" style={{ top: calcValue(sectionInfo[1].values.wave_move) + '%' }}></div>
                         <div className="wave2" style={{ top: calcValue(sectionInfo[1].values.wave2_move) + '%' }}></div>
-                        <div className="opa-elem second-message">
-                            <p>🖥 프로그래머로</p>
+                        <div className="opa-elem second-message" style={{ opacity: (scrollRatio < 0.3) ? calcValue(sectionInfo[1].values.secondMessage_opacity) : calcValue(sectionInfo[1].values.secondMessage_opacity_out) }}>
+                            <p>🖥 프로그래머!</p>
                         </div>
-                        <div className="opa-elem introduce">
-                            <p id="hello">안녕하세요!</p>
-                            <p><span id="jeongdabin">정다빈</span><span id="my-name">입니다.</span></p>
+                        <div className="opa-elem introduce" style={{ opacity: (currentSection === 1) ? 1 : 0 }}>
+                            <p
+                                id="hello"
+                                style={{ opacity: calcValue(sectionInfo[1].values.introHello_opacity) }}
+                            >
+                                안녕하세요!
+                            </p>
+                            <p>
+                                <span id="jeongdabin" style={{ opacity: 1 }}>{myName()}</span>
+                                <span id="my-name" style={{ opacity: calcValue(sectionInfo[1].values.introMyname_opacity) }}>입니다.</span>
+                            </p>
                         </div>
                     </section>
                     <section className="section" id="section-2" style={{ height: sectionValue[2].height }}>
@@ -119,7 +155,7 @@ const Home = () => {
                             <p><span id="jeongdabin">정다빈</span><span id="my-name">입니다.</span></p>
                         </div>
 
-                        <div className="move-elem main">
+                        <div className="move-elem main" style={{ top: calcValue(sectionInfo[2].values.main_move) + 'vh', opacity: (currentSection === 2) ? 1 : 0 }}>
                             <div className="main-title skill">
                                 <p>🛠 기술</p>
                             </div>

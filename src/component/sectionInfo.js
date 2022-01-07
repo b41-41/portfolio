@@ -40,7 +40,6 @@ export const sectionInfo = [
             secondMessage_opacity_out: [1, 0, { start: 0.4, end: 0.5 }],
             //introduce
             introHello_opacity: [0, 1, { start: 0.52, end: 0.6 }],
-            introJeongdabin_visible: [0, 1, { start: 0.6, end: 0.6 }],
             introMyname_opacity: [0, 1, { start: 0.76, end: 1 }],
         }
     },
