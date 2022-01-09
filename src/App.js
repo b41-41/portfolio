@@ -1,18 +1,17 @@
 import React from 'react';
-import { HashRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages';
-import Portfolio from './pages/Portfolio.js';
+import Portfolio from './pages/Portfolio'
 
 function App() {
-  // return <HashRouter>
-  //   <Route path="/" exact={true} component={Home} />
-  //   <Route path="/portfolio" exact={true} component={Portfolio} />
-  // </HashRouter>
   return (
-    <>
-      <Home />
-    </>
-  )
+    <BrowserRouter basename="/">
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/portfolio" element={<Portfolio />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;

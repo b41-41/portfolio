@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import '../css/default.css';
 import '../css/style.css';
 import { useScroll } from '../hooks/useScroll';
@@ -170,9 +171,9 @@ const Home = () => {
                                 </li>
                             </div>
                             <div className="main-title project">
-                                <a href="./portfolio.html">
+                                <Link to="/Portfolio">
                                     <p>📑 작업 목록</p>
-                                </a>
+                                </Link>
                             </div>
                             <div className="main-content project">
                                 <li>

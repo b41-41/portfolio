@@ -1,4 +1,5 @@
 import React from 'react';
+import '../css/default.css';
 
 const Portfolio = () => {
 
