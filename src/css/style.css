@@ -136,6 +136,15 @@ a {
   z-index: 0;
 }
 
+.blue_background {
+  position: fixed;
+  background-color: #0540f2;
+  width: 100vw;
+  height: 100vh;
+  /* bottom: ; */
+  z-index: 2;
+}
+
 .opa-elem {
   opacity: 0;
 }

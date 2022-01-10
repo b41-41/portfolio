@@ -95,6 +95,7 @@ const Home = () => {
 
 
     }
+    console.log(currentYOffset);
 
     return (
         <>
@@ -134,6 +135,7 @@ const Home = () => {
                     <section className="section" id="section-1" style={{ height: sectionValue[1].height, backgroundColor: 'white' }}>
                         <div className="wave" style={{ top: calcValue(sectionInfo[1].values.wave_move) + '%' }}></div>
                         <div className="wave2" style={{ top: calcValue(sectionInfo[1].values.wave2_move) + '%' }}></div>
+                        <div className="blue_background" style={{ bottom: calcValue(sectionInfo[1].values.blue_background) + '%' }}></div>
                         <div className="opa-elem second-message" style={{ opacity: (scrollRatio < 0.3) ? calcValue(sectionInfo[1].values.secondMessage_opacity) : calcValue(sectionInfo[1].values.secondMessage_opacity_out) }}>
                             <p>🖥 프로그래머!</p>
                         </div>
