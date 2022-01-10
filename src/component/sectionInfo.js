@@ -18,7 +18,7 @@ export const sectionInfo = [
             //wave
             wave_move: [100, -50, { start: 0, end: 0.2 }],
             wave2_move: [115, -35, { start: 0, end: 0.2 }],
-            blue_background: [-100, -30, { start: 0.0, end: 0.2 }],
+            blue_background: [-100, -40, { start: 0.0, end: 0.2 }],
 
             //to programar
             secondMessage_opacity: [0, 1, { start: 0.15, end: 0.24 }],
