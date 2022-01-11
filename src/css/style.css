@@ -20,6 +20,10 @@ a {
   color: #d8e6f2;
 }
 
+div {
+  transition: 0.1s;
+}
+
 .section {
   width: 100%;
   text-align: center;
