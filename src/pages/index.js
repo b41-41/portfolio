@@ -5,6 +5,7 @@ import '../css/style.css';
 import { useScroll } from '../hooks/useScroll';
 import { useSetLayout } from '../hooks/useSetLayout';
 import { sectionInfo } from '../component/sectionInfo';
+import ProjectListMini from '../component/ProjectListMini';
 
 const Home = () => {
 
@@ -123,7 +124,7 @@ const Home = () => {
                             className="opa-elem first-message"
                             style={{ opacity: calcValue(sectionInfo[0].values.firstMessage_opacity) }}
                         >
-                            <p>한국어도 가르치는</p>
+                            <p>한국어 선생님에서</p>
                         </div>
                         <div className="opa-elem pls-scroll">
                             <div className="arrow"></div>
@@ -137,7 +138,10 @@ const Home = () => {
                         <div className="wave2" style={{ top: calcValue(sectionInfo[1].values.wave2_move) + '%' }}></div>
                         <div className="blue_background" style={{ bottom: calcValue(sectionInfo[1].values.blue_background) + '%' }}></div>
                         <div className="opa-elem second-message" style={{ opacity: (scrollRatio < 0.3) ? calcValue(sectionInfo[1].values.secondMessage_opacity) : calcValue(sectionInfo[1].values.secondMessage_opacity_out) }}>
-                            <p>🖥 프로그래머!</p>
+                            <p>프론트엔드 <br />
+                                프로그래머로 🖥 <br />
+                                열심히 <br />
+                                일하겠습니다.</p>
                         </div>
                         <div className="opa-elem introduce" style={{ opacity: (currentSection === 1) ? 1 : 0 }}>
                             <p
@@ -174,15 +178,12 @@ const Home = () => {
                             </div>
                             <div className="main-title project">
                                 <Link to="/Portfolio">
-                                    <p>📑 작업 목록</p>
+                                    <p>📑 프로젝트</p>
                                 </Link>
                             </div>
-                            <div className="main-content project">
+                            <div className="main-content-box project">
                                 <li>
-                                    <ul>
-                                        <div className="main-content_top">CLASS WORK</div>
-                                        <div className="main-content_bottom">pls insert IMAGE</div>
-                                    </ul>
+                                    <ProjectListMini />
                                 </li>
                             </div>
                             <div className="main-title contact">
@@ -190,13 +191,14 @@ const Home = () => {
                             </div>
                             <div className="main-content contact">
                                 <li>
-                                    <ul>e-mail: 41@b41.kr</ul>
-                                    <ul><a href="http://github.com/b41-41" target="_blank" title>github: http://github.com/b41-41</a></ul>
+                                    <ul>✉️ 41@b41.kr</ul>
+                                    <ul><a href="http://github.com/b41-41" target="_blank" rel="noopener noreferrer">🐈‍⬛ http://github.com/b41-41</a></ul>
                                 </li>
                             </div>
                         </div>
                     </section>
                 </div>
+                <footer>&copy; 정다빈 {new Date().getFullYear()}</footer>
             </body >
         </>
     );
