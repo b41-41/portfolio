@@ -20,8 +20,8 @@ const Home = () => {
 
     //현재 Section 계산
     const currentSectionCalc = () => {
-
         if (yOffset > prevScrollHeight + sectionValue[currentSection].height) {
+            if (currentSection > sectionInfo.length - 2) return;
             setCurrentSection(currentSection + 1);
         };
 
@@ -68,6 +68,7 @@ const Home = () => {
         for (let i = 0; i < currentSection; i++) {
             sumPrevScrollHeight = sumPrevScrollHeight + sectionValue[i].height;
         }
+        console.log(`s:${sumPrevScrollHeight}`);
         setPrevScrollHeight(sumPrevScrollHeight);
     }, [currentSection]);
 
@@ -101,14 +102,19 @@ const Home = () => {
 
     }
     console.log(currentYOffset);
-    console.log(scrollRatio);
+    // console.log(scrollRatio);
+    console.log(scrollHeight);
+    console.log(sectionValue);
+    console.log(sectionValue[2].height);
+    console.log(`yOffset: ${yOffset}`)
 
     return (
         <>
             <body id={`show-section-${currentSection}`} style={{ backgroundColor: (currentSection === 0 && 1) ? 'white' : '#0540f2' }}>
+                <div className="test">{currentSection}</div>
                 <div className="scrollRatio" style={{ width: scrollRatio * 100 + '%' }} />
                 <div className="container">
-                    <section className="section" id="section-0" style={{ height: sectionValue[0].height, backgroundColor: `white`, opacity: calcValue(sectionInfo[0].values.container_opacity) }}>
+                    <section className="section" id="section-0" style={{ height: sectionValue[0].height + 'px', backgroundColor: `white`, opacity: calcValue(sectionInfo[0].values.container_opacity) }}>
                         <div className="loading" style={{ left: calcValue(sectionInfo[0].values.loadingObj_move) + '%', opacity: calcValue(sectionInfo[0].values.loadingObj_opacity) }}>
                             <p>
                                 로딩 완료<br />
@@ -139,7 +145,7 @@ const Home = () => {
                             </div>
                         </div>
                     </section>
-                    <section className="section" id="section-1" style={{ height: sectionValue[1].height, backgroundColor: 'white' }}>
+                    <section className="section" id="section-1" style={{ height: sectionValue[1].height + 'px', backgroundColor: 'white' }}>
                         <div className="wave" style={{ top: calcValue(sectionInfo[1].values.wave_move) + '%' }}></div>
                         <div className="wave2" style={{ top: calcValue(sectionInfo[1].values.wave2_move) + '%' }}></div>
                         <div className="blue_background" style={{ bottom: calcValue(sectionInfo[1].values.blue_background) + '%' }}></div>
@@ -162,7 +168,7 @@ const Home = () => {
                             </p>
                         </div>
                     </section>
-                    <section className="section" id="section-2" style={{ height: sectionValue[2].height }}>
+                    <section className="section" id="section-2" style={{ height: sectionValue[2].height + 'px' }}>
                         <div className="introduce-section2">
                             <p id="hello">안녕하세요!</p>
                             <p><span id="jeongdabin">정다빈</span><span id="my-name">입니다.</span></p>
@@ -188,9 +194,7 @@ const Home = () => {
                                 </Link>
                             </div>
                             <div className="main-content-box project">
-                                <li>
-                                    <ProjectListMini />
-                                </li>
+                                <ProjectListMini />
                             </div>
                             <div className="main-title contact">
                                 <p>📨 연락처</p>
