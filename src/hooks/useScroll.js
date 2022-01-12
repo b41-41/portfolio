@@ -4,7 +4,11 @@ export function useScroll() {
     const [yOffset, setYOffset] = useState(0);
 
     const listener = e => {
-        setYOffset(window.pageYOffset);
+        if (window.pageYOffset < 0) {
+            setYOffset(0);
+        } else {
+            setYOffset(window.pageYOffset);
+        }
     };
 
     useEffect(() => {

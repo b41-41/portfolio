@@ -56,7 +56,11 @@ const Home = () => {
     //스크롤 할 때마다 이전 값 계산
     useEffect(() => {
         currentSectionCalc();
-        setCurrentYOffset(yOffset - prevScrollHeight);
+        if (currentYOffset < 0) {
+            setCurrentYOffset(0);
+        } else {
+            setCurrentYOffset(yOffset - prevScrollHeight);
+        }
     }, [yOffset]);
 
     useEffect(() => {
@@ -97,10 +101,12 @@ const Home = () => {
 
     }
     console.log(currentYOffset);
+    console.log(scrollRatio);
 
     return (
         <>
             <body id={`show-section-${currentSection}`} style={{ backgroundColor: (currentSection === 0 && 1) ? 'white' : '#0540f2' }}>
+                <div className="scrollRatio" style={{ width: scrollRatio * 100 + '%' }} />
                 <div className="container">
                     <section className="section" id="section-0" style={{ height: sectionValue[0].height, backgroundColor: `white`, opacity: calcValue(sectionInfo[0].values.container_opacity) }}>
                         <div className="loading" style={{ left: calcValue(sectionInfo[0].values.loadingObj_move) + '%', opacity: calcValue(sectionInfo[0].values.loadingObj_opacity) }}>
