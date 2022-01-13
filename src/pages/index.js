@@ -31,6 +31,7 @@ const Home = () => {
         }
     };
 
+    //애니메이션이 들어가는 위치와 나오는 위치의 값 계산
     const calcValue = (values) => {
         let rv;
 
@@ -63,15 +64,16 @@ const Home = () => {
         }
     }, [yOffset]);
 
+    //현재 섹션의 이전 값의 합 계산
     useEffect(() => {
         let sumPrevScrollHeight = 0;
         for (let i = 0; i < currentSection; i++) {
-            sumPrevScrollHeight = sumPrevScrollHeight + sectionValue[i].height;
+            sumPrevScrollHeight += sectionValue[i].height;
         }
-        console.log(`s:${sumPrevScrollHeight}`);
         setPrevScrollHeight(sumPrevScrollHeight);
     }, [currentSection]);
 
+    //이름 애니메이션
     const myName = () => {
         if (currentSection === 1) {
             if (scrollRatio < 0.6) {
@@ -98,26 +100,29 @@ const Home = () => {
         } else {
             return;
         }
-
-
     }
-    console.log(currentYOffset);
-    // console.log(scrollRatio);
-    console.log(scrollHeight);
-    console.log(sectionValue);
-    console.log(sectionValue[2].height);
-    console.log(`yOffset: ${yOffset}`)
+
+    //총 스크롤 값 계산
+    const calSumHeight = (section) => {
+        let sumHeightValue = 0;
+        for (let i = 0; i < section; i++) {
+            sumHeightValue += sectionValue[i].height;
+        }
+        return sumHeightValue;
+    }
+    const sumHeight = calSumHeight(sectionValue.length);
 
     return (
         <>
             <body id={`show-section-${currentSection}`} style={{ backgroundColor: (currentSection === 0 && 1) ? 'white' : '#0540f2' }}>
                 <div className="test">{currentSection}</div>
-                <div className="scrollRatio" style={{ width: scrollRatio * 100 + '%' }} />
+                {/* <div className="scrollRatio" style={{ width: (currentSection / (sectionInfo.length - 1)) * 100 + '%' }} /> */}
+                <div className="scrollRatio" style={{ width: (yOffset / sumHeight) * 100 + '%' }} />
                 <div className="container">
                     <section className="section" id="section-0" style={{ height: sectionValue[0].height + 'px', backgroundColor: `white`, opacity: calcValue(sectionInfo[0].values.container_opacity) }}>
                         <div className="loading" style={{ left: calcValue(sectionInfo[0].values.loadingObj_move) + '%', opacity: calcValue(sectionInfo[0].values.loadingObj_opacity) }}>
                             <p>
-                                로딩 완료<br />
+                                반갑습니다!<br />
                                 <span id="loading_2">스크롤을 내려 주세요</span>
                             </p>
                         </div>
@@ -145,7 +150,7 @@ const Home = () => {
                             </div>
                         </div>
                     </section>
-                    <section className="section" id="section-1" style={{ height: sectionValue[1].height + 'px', backgroundColor: 'white' }}>
+                    <section className="section" name="section-1" id="section-1" style={{ height: sectionValue[1].height + 'px', backgroundColor: 'white' }}>
                         <div className="wave" style={{ top: calcValue(sectionInfo[1].values.wave_move) + '%' }}></div>
                         <div className="wave2" style={{ top: calcValue(sectionInfo[1].values.wave2_move) + '%' }}></div>
                         <div className="blue_background" style={{ bottom: calcValue(sectionInfo[1].values.blue_background) + '%' }}></div>
@@ -168,7 +173,7 @@ const Home = () => {
                             </p>
                         </div>
                     </section>
-                    <section className="section" id="section-2" style={{ height: sectionValue[2].height + 'px' }}>
+                    <section className="section" id="section-2" style={{ height: sectionValue[2].height * 1.5 + 'px' }}>
                         <div className="introduce-section2">
                             <p id="hello">안녕하세요!</p>
                             <p><span id="jeongdabin">정다빈</span><span id="my-name">입니다.</span></p>

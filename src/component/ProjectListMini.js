@@ -8,11 +8,11 @@ import '../css/portfolio_mini.css';
 const ProjectListMini = () => {
     return (
         <>
-            <li>
+            <li className="main-content_frame">
                 {ProjectData.map(project => {
                     return (
                         <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                            <ul>
+                            <ul className="main-content_box">
                                 <div className="main-content_project">
                                     <div className="main-content_project_image">
                                         <img src={project.image} alt={project.title} />
